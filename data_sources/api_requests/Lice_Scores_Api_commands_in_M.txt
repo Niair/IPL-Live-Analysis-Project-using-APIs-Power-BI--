@@ -1,0 +1,25 @@
+let
+    // Define the API URL and headers
+    MatchID = Text.From(Latest_Match{0}[MatchID]),
+    LastURL = "hscard",
+
+    apiUrl = "https://cricbuzz-cricket.p.rapidapi.com/mcenter/v1/"& MatchID &"/"&LastURL,
+    headers = [
+        #"X-RapidAPI-Key" = "your-api-key",
+        #"X-RapidAPI-Host" = "cricbuzz-cricket.p.rapidapi.com"
+    ],
+
+    // Create a function to make the API request
+    getApiData = (url as text, headers as record) =>
+        let
+            // Make the request
+            response = Web.Contents(url, [Headers=headers]),
+            // Parse the JSON response
+            jsonResponse = Json.Document(response)
+        in
+            jsonResponse,
+
+    // Call the function to get the API data
+    apiData = getApiData(apiUrl, headers)
+in
+    apiData

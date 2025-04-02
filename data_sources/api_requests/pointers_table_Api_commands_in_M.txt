@@ -1,0 +1,34 @@
+let
+    // Define the API URL and headers
+    apiUrl = "https://cricbuzz-cricket.p.rapidapi.com/stats/v1/series/9237/points-table",
+    headers = [
+        #"X-RapidAPI-Key" = "your-api-key",
+        #"X-RapidAPI-Host" = "cricbuzz-cricket.p.rapidapi.com"
+    ],
+
+    // Create a function to make the API request
+    getApiData = (url as text, headers as record) =>
+        let
+            // Make the request
+            response = Web.Contents(url, [Headers=headers]),
+            // Parse the JSON response
+            jsonResponse = Json.Document(response)
+        in
+            jsonResponse,
+
+    // Call the function to get the API data
+    apiData = getApiData(apiUrl, headers),
+    // Call the function to get the API data
+    pointsTable = apiData[pointsTable],
+    #"Converted to Table" = Table.FromList(pointsTable, Splitter.SplitByNothing(), null, null, ExtraValues.Error),
+    #"Expanded Column1" = Table.ExpandRecordColumn(#"Converted to Table", "Column1", {"pointsTableInfo"}, {"Column1.pointsTableInfo"}),
+    #"Expanded Column1.pointsTableInfo" = Table.ExpandListColumn(#"Expanded Column1", "Column1.pointsTableInfo"),
+    #"Expanded Column1.pointsTableInfo1" = Table.ExpandRecordColumn(#"Expanded Column1.pointsTableInfo", "Column1.pointsTableInfo", {"teamId", "teamName", "matchesPlayed", "matchesWon", "points", "nrr", "teamFullName"}, {"Column1.pointsTableInfo.teamId", "Column1.pointsTableInfo.teamName", "Column1.pointsTableInfo.matchesPlayed", "Column1.pointsTableInfo.matchesWon", "Column1.pointsTableInfo.points", "Column1.pointsTableInfo.nrr", "Column1.pointsTableInfo.teamFullName"}),
+    #"Renamed Columns" = Table.RenameColumns(#"Expanded Column1.pointsTableInfo1",{{"Column1.pointsTableInfo.teamId", "TeamID"}, {"Column1.pointsTableInfo.teamName", "TeamSName"}, {"Column1.pointsTableInfo.matchesPlayed", "MatchesPlayed"}, {"Column1.pointsTableInfo.matchesWon", "MatchesWon"}, {"Column1.pointsTableInfo.points", "Points"}, {"Column1.pointsTableInfo.nrr", "NetRunRate"}, {"Column1.pointsTableInfo.teamFullName", "TeamName"}}),
+    #"Reordered Columns" = Table.ReorderColumns(#"Renamed Columns",{"TeamID", "TeamName", "TeamSName", "MatchesPlayed", "MatchesWon", "Points", "NetRunRate"}),
+    #"Merged Queries" = Table.FuzzyNestedJoin(#"Reordered Columns", {"TeamName"}, Team_logo, {"Team"}, "Team_logo", JoinKind.LeftOuter, [IgnoreCase=true, IgnoreSpace=true]),
+    #"Expanded Team_logo" = Table.ExpandTableColumn(#"Merged Queries", "Team_logo", {"Logo", "Captain Images"}, {"Team_logo.Logo", "Team_logo.Captain Images"}),
+    #"Renamed Columns1" = Table.RenameColumns(#"Expanded Team_logo",{{"Team_logo.Logo", "TeamLogo"}, {"Team_logo.Captain Images", "CaptainImage"}}),
+    #"Changed Type" = Table.TransformColumnTypes(#"Renamed Columns1",{{"MatchesPlayed", Int64.Type}, {"MatchesWon", Int64.Type}, {"Points", Int64.Type}, {"NetRunRate", type number}, {"TeamID", Int64.Type}})
+in
+    #"Changed Type"
