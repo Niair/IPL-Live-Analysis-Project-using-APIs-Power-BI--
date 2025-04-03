@@ -1,5 +1,4 @@
 # IPL Live Cricket Analysis Dashboard - Power BI Project 🏏📊
----
 
 ## 🌟 Project Overview
 This **real-time IPL analytics dashboard** built with **Power BI** fetches live match data from **RapidAPI** to deliver dynamic visualizations of ongoing matches, player performances, and tournament standings. Designed for cricket analysts and fans, it provides instant insights with automated updates.
