@@ -44,7 +44,3 @@ Interactive tournament rankings with filters
 2. Processes real-time match data  
 3. Displays key metrics through interactive visuals  
 4. Auto-updates during matches  
-
-[Rest of your existing README content remains unchanged...]  
-
-This version maintains professionalism while simplifying the technical details to match your project's scope. The implementation directly supports all metrics shown in your PDF (strike rates, economy rates, points table).
