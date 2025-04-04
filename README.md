@@ -1,83 +1,50 @@
-# IPL Live Cricket Analysis Dashboard - Power BI Project 🏏📊
+# IPL Live Performance Dashboard  
 
-## 🌟 Project Overview
-This **real-time IPL analytics dashboard** built with **Power BI** fetches live match data from **RapidAPI** to deliver dynamic visualizations of ongoing matches, player performances, and tournament standings. Designed for cricket analysts and fans, it provides instant insights with automated updates.
+## 📊 Project Overview  
+A real-time analytics dashboard that tracks live IPL match data, evaluating batter and bowler performance metrics. Features an interactive points table ranking teams by strike rates and win/loss records, delivering data-driven insights for cricket enthusiasts.  
 
----
+##🎥 Project Demo Video
+(Add this section right below the overview)
+Video Thumbnail
+A quick walkthrough of the dashboard's live updates and features.
 
-## 🚀 Key Features
+##📸 Dashboard Screenshots
+(Add this after the "How It Works" section)
 
-### 📊 **Live Match Dashboard**
-✔ **Real-time scorecards** for both innings with run rates  
-✔ **Batting analytics**: Runs, 4s, 6s, strike rates (e.g., Buttler: 73 runs @ 187.18 SR)  
-✔ **Bowling metrics**: Economy, wickets, wides (e.g., Bhuvi: 5.8 economy)  
-✔ **Visual trends**: Required vs current run rate comparison  
-✔ **Player spotlight**: Contributions via boundaries (14 fours, 11 sixes in sample data)  
+**Live Match View**
+(pic)Live Match Analytics
+Real-time batting/bowling stats with run-rate comparison
 
-### 🏆 **Tournament Intelligence**
-✔ **Points table** with rankings (Punjab Kings leading in sample)  
-✔ **Team performance**: Matches played, won/lost, NRR (Net Run Rate)  
-✔ **Progress tracking**: Points accumulation (4 pts for top teams)  
+**Points Table**
+(pic)Team Standings
+Interactive tournament rankings with filters
 
-### ⚡ **Tech Innovations**
-✔ **API-powered**: Auto-refreshes data from RapidAPI  
-✔ **Interactive filters**: Drill into teams/players (e.g., GT vs RCB focus)  
-✔ **DAX measures**: Dynamic calculations (strike rates, NRR)  
+## 🛠️ Technical Implementation  
 
----
+**Data Pipeline**  
+- **Source**: Fetches live match data via Cricket API (RapidAPI)  
+- **Processing**: Cleans and transforms JSON data using Power Query  
+- **Metrics Calculated**:  
+  - Batting: Runs, Strike Rate (e.g., 187.18), Boundaries (4s/6s)  
+  - Bowling: Economy Rate (e.g., 5.8), Wickets  
+  - Team Standings: Points, Net Run Rate (e.g., 1.49)  
 
-## 🛠️ Technical Implementation
+**Visual Analytics**  
+- Live match tracker with innings comparison  
+- Player performance cards (Runs, Status)  
+- Interactive points table with sorting  
 
-| Component          | Details                                                                 |
-|--------------------|-------------------------------------------------------------------------|
-| **Data Source**    | RapidAPI (Live IPL Match & Points Table APIs)                           |
-| **Transformations**| Power Query M for data cleaning (e.g., parsing JSON responses)          |
-| **Visualizations** | Custom cards, matrices, and trend lines in Power BI                      |
-| **Calculations**   | DAX for metrics like `Strike Rate = (Runs/Balls)*100`                   |
+**Tools Used**  
+- Power BI (Visualization)  
+- Power Query (Data Transformation)  
+- DAX (Metrics Calculation)  
 
----
+## ▶️ How It Works  
+1. Connects to live cricket API  
+2. Processes real-time match data  
+3. Displays key metrics through interactive visuals  
+4. Auto-updates during matches  
 
-## 📥 Setup Guide
+[Rest of your existing README content remains unchanged...]  
 
-1. **Prerequisites**:  
-   - Power BI Desktop  
-   - RapidAPI key (subscribe to cricket API)  
-
-2. **Configuration**:  
-   ```powerquery
-   // Sample Power Query snippet for API connection
-   Source = Json.Document(Web.Contents("https://cricket-api.p.rapidapi.com", [Headers=[#"X-RapidAPI-Key"="YOUR_KEY"]]))
-   ```
-
-3. **Usage**:  
-   - Refresh dashboard to load live data  
-   - Hover on visuals for tooltips (e.g., sixes contribution %)  
-
----
-
-## 🎨 Dashboard Preview
-
-![Live Match Page](https://via.placeholder.com/600x400?text=GT+vs+RCB+Live+Scores)  
-*Live innings comparison with run rate charts*
-
-![Points Table](https://via.placeholder.com/600x400?text=IPL+2025+Standings)  
-*Sortable table with team rankings*
-
----
-
-## 🔮 Roadmap
-
-| Enhancement                          | Status  |
-|--------------------------------------|---------|
-| Win probability model                | Planned |
-| Player head-to-head comparisons      | Next    |
-| Mobile-responsive design             | Future  |
-
----
-
-## 🤝 Contribute
-**Got ideas?** Open an issue or submit a PR!  
-👉 **Ways to contribute**:  
-- Add new API data sources  
-- Improve DAX measures (e.g., powerplay analysis)  
-- Design enhancements  
+This version maintains professionalism while simplifying the technical details to match your project's scope. The implementation directly supports all metrics shown in your PDF (strike rates, economy rates, points table).
