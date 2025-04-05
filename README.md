@@ -5,7 +5,7 @@ A real-time analytics dashboard that tracks live IPL match data, evaluating batt
 
 ## 🎥 Project Demo Video
 (Add this section right below the overview)
-Video Thumbnail
+[Video Thumbnail](https://youtu.be/YuZidZN9qrY)
 A quick walkthrough of the dashboard's live updates and features.
 
 ## 📸 Dashboard Screenshots
