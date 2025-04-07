@@ -4,8 +4,7 @@
 A real-time analytics dashboard that tracks live IPL match data, evaluating batter and bowler performance metrics. Features an interactive points table ranking teams by strike rates and win/loss records, delivering data-driven insights for cricket enthusiasts.  
 
 ## 🎥 Project Demo Video
-(Add this section right below the overview)
-[Video Thumbnail](https://youtu.be/YuZidZN9qrY)
+[Video](https://youtu.be/YuZidZN9qrY)
 A quick walkthrough of the dashboard's live updates and features.
 
 ## 📸 Dashboard Screenshots
